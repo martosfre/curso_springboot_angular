@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/curso_springboot_angular.iml" filepath="$PROJECT_DIR$/.idea/curso_springboot_angular.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seguridad/seguridades.iml" filepath="$PROJECT_DIR$/seguridad/seguridades.iml" />
+    </modules>
+  </component>
+</project>
