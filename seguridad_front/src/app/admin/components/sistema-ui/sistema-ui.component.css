@@ -1,0 +1,13 @@
+.form-card{
+  min-width:500px;
+  max-width:800px;
+  margin:auto;
+}
+
+.full-width{
+  width:100%;
+}
+
+.button-group{
+  margin-bottom:15px;
+}

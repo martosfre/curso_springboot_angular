@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-root', //Conmo se va a llamar al componente
+  templateUrl: './app.component.html', //Cúal es la página web o cual es contenido html (vista)
+  styleUrl: './app.component.css' //Hoja(s) de estilo
 })
 export class AppComponent {
-  title = 'seguridad_front';
+  title = 'Seguridades FFTT';
+  nombre = "Matoosfes ";
+  isDisabled = false;
 }

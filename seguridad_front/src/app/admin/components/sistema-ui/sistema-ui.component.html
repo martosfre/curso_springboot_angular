@@ -1,0 +1,52 @@
+<mat-card class="form-card">
+  <h2>{{selectId ? "Actualizar Sistema" : "Crear Sistema"}}</h2>
+  <form [formGroup]="form">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nombre:</mat-label>
+      <input matInput type="text" formControlName="nombreSis">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Descripción:</mat-label>
+      <textarea matInput placeholder="Ex. 100 Main St" formControlName="descripcionSis"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Contexto:</mat-label>
+      <input matInput type="text" formControlName="contextoSis">
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="emitirAction()">
+        {{actionButtonLabel}}
+      </button>
+      <button mat-raised-button color="warn" (click)="clear()">
+        Limpiar
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<p-card header="{{selectId ? 'Actualizar Sistema' : 'Crear Sistema'}}">
+  <form [formGroup]="form">
+    <div class="flex flex-column gap-2">
+      <label for="nombreSis">Nombre:</label>
+      <input pInputText id="nombreSis" formControlName="nombreSis"/>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="descripcionSis">Descripción:</label>
+      <textarea id="descripcionSis" rows="3" cols="30" formControlName="descripcionSis"></textarea>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="contextoSis">Contexto:</label>
+      <input pInputText id="contextoSis" formControlName="contextoSis"/>
+    </div>
+    <p-toolbar>
+      <div class="p-toolbar-group-end">
+        <p-button label="{{actionButtonLabel}}" (click)="emitirAction()"></p-button>
+        <span style="width:5px"></span>
+        <p-button label="Limpiar" (click)="clear()"></p-button>
+      </div>
+    </p-toolbar>
+  </form>
+</p-card>
