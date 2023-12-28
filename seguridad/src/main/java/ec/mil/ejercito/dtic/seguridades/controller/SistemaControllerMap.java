@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController //Anotación para identificar que la clase es un servicio web de tipo REST
 @RequestMapping("/api/sistemaCon") //http://localhost:8080/seguridad/api/sistema // Configurar el root del Servicio
 @Tag(name = "Sistema API", description = "Api para manejar las operaciones de Sistemas")

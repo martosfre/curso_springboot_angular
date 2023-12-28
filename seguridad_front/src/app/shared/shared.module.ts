@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavbarComponent} from "./layout/navbar/navbar.component";
 import {ToolbarComponent} from "./layout/toolbar/toolbar.component";
 import {FooterComponent} from "./layout/footer/footer.component";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {FooterComponent} from "./layout/footer/footer.component";
     ToolbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[
     NavbarComponent,

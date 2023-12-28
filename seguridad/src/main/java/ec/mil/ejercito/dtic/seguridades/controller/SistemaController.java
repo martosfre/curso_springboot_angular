@@ -1,9 +1,7 @@
 package ec.mil.ejercito.dtic.seguridades.controller;
 
-import ec.mil.ejercito.dtic.seguridades.dto.SistemaDto;
 import ec.mil.ejercito.dtic.seguridades.entity.Sistema;
 import ec.mil.ejercito.dtic.seguridades.service.SistemaService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

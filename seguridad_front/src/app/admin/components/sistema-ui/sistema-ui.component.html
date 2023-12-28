@@ -1,32 +1,3 @@
-<mat-card class="form-card">
-  <h2>{{selectId ? "Actualizar Sistema" : "Crear Sistema"}}</h2>
-  <form [formGroup]="form">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Nombre:</mat-label>
-      <input matInput type="text" formControlName="nombreSis">
-    </mat-form-field>
-
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Descripción:</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St" formControlName="descripcionSis"></textarea>
-    </mat-form-field>
-
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Contexto:</mat-label>
-      <input matInput type="text" formControlName="contextoSis">
-    </mat-form-field>
-
-    <div class="button-group">
-      <button mat-raised-button color="primary" (click)="emitirAction()">
-        {{actionButtonLabel}}
-      </button>
-      <button mat-raised-button color="warn" (click)="clear()">
-        Limpiar
-      </button>
-    </div>
-  </form>
-</mat-card>
-
 <p-card header="{{selectId ? 'Actualizar Sistema' : 'Crear Sistema'}}">
   <form [formGroup]="form">
     <div class="flex flex-column gap-2">

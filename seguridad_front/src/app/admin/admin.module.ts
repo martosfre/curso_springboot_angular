@@ -8,12 +8,7 @@ import {SistemaListComponent} from "./pages/sistema-list/sistema-list.component"
 import {SistemaUiListComponent} from "./components/sistema-ui-list/sistema-ui-list.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdminRoutingModule} from "./admin-routing.module";
-
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
+import {PrimengModule} from "../primeng/primeng.module";
 
 @NgModule({
   /*
@@ -30,14 +25,9 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     SharedModule,
     MaterialModule,
+    PrimengModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    CardModule,
-    InputTextModule,
-    InputTextareaModule,
-    ToolbarModule,
-    ButtonModule
-
   ],
   //Declarmos los servicios que van a estar disponibles para la inyección de dependencia
   providers: [],

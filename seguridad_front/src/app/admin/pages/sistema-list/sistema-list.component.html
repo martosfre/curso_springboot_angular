@@ -1,1 +1,6 @@
-<p>sistema-list works!</p>
+<app-toolbar title="{{tituloFormulario}}"/>
+<!--En el dump componente se inyecta la propiedad del smart component.
+    Aqui desde el smart component se llama al dump component-->
+<app-sistema-ui-list [sistemas]="sistemas" [cabeceras]="cabeceras"
+                     (sistema)="seleccionarSistema($event)"/>
+<app-footer/>
