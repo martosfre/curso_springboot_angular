@@ -28,6 +28,7 @@ export class SistemaListComponent  implements OnInit{
   ) {}
 
   ngOnInit(): void {
+
   }
 
   seleccionarSistema(data:{sistema:Sistema, action:Operaciones}){
