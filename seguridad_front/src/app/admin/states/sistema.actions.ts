@@ -15,21 +15,21 @@ export const getSistemaList = createAction(
 
 export const setSistemaList = createAction(
   SistemaActions.SET_SISTEMAS_LIST,
-  props<{ sistemas: Sistema[] }>
+  props<{ sistemas: Sistema[] }>()
 );
 
 export const addSistemaState = createAction(
   SistemaActions.ADD_SISTEMA_STATE,
-  props<{ sistema: Sistema }>
+  props<{ sistema: Sistema }>()
 )
 
 export const updateSistemaState = createAction(
   SistemaActions.MODIFY_SISTEMA_STATE,
-  props<{ sistema: Sistema }>
+  props<{ sistema: Sistema }>()
 )
 
 export const removeSistemaState = createAction(
   SistemaActions.REMOVE_SISTEMA_STATE,
-  props<{ sistemaId: number }>
+  props<{ sistemaId: number }>()
 )
 
