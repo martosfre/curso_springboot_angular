@@ -22,5 +22,5 @@ export class SistemaEffects {
           catchError(() => EMPTY)
         ))
     )
-  })
+  }, {dispatch: true})
 }

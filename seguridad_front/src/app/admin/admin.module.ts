@@ -9,6 +9,10 @@ import {SistemaUiListComponent} from "./components/sistema-ui-list/sistema-ui-li
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {PrimengModule} from "../primeng/primeng.module";
+import {EffectsModule} from "@ngrx/effects";
+import {SistemaEffects} from "./states/sistema.effects";
+import {sistemaReducer} from "./states/sistema.reducers";
+import {StoreModule} from "@ngrx/store";
 
 @NgModule({
   /*
@@ -28,6 +32,8 @@ import {PrimengModule} from "../primeng/primeng.module";
     PrimengModule,
     ReactiveFormsModule,
     AdminRoutingModule,
+    StoreModule.forFeature('sistemaState', sistemaReducer),
+    EffectsModule.forFeature([SistemaEffects])
   ],
   //Declarmos los servicios que van a estar disponibles para la inyección de dependencia
   providers: [],
