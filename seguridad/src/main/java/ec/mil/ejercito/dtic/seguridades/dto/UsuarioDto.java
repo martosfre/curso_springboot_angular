@@ -18,4 +18,6 @@ public class UsuarioDto {
     private String usuarioClave;
     private LocalDateTime usuarioFechaCreacion;
     private String uusarioCorreo;
+
+    private String token;
 }

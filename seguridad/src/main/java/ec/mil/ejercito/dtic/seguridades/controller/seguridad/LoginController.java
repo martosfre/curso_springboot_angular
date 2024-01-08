@@ -20,7 +20,7 @@ public class LoginController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity getToken(@RequestBody UsuarioDto usuarioDto){
+    public ResponseEntity<UsuarioDto> getToken(@RequestBody UsuarioDto usuarioDto){
         UsernamePasswordAuthenticationToken credencial =
                 new UsernamePasswordAuthenticationToken(usuarioDto.getUsuarioNombre(),
                         usuarioDto.getUsuarioClave());
@@ -31,9 +31,10 @@ public class LoginController {
         //Generar el token
         String jwts = jwtService.getToken(authentication.getName());
 
+        //Seteo token en la respuesta
+        usuarioDto.setToken(jwts);
+
         //Genera la respuesta con el token
-        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, JwtService.PREFIX + jwts)
-                .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Authorization")
-                .build();
+        return ResponseEntity.ok(usuarioDto);
     }
 }
