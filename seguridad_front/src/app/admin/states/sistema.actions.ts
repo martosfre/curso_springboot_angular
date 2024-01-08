@@ -5,8 +5,11 @@ export enum SistemaActions {
   GET_SISTEMAS_LIST = '[Sistema] Get Sistema List',
   SET_SISTEMAS_LIST = '[Sistema] Set Sistema List',
   ADD_SISTEMA_STATE = '[Sistema] Add Sistema (STATE)',
+  ADD_SISTEMA_API = '[Sistema] Add Sistema (API)',
   MODIFY_SISTEMA_STATE = '[Sistema] Modify Sistema (STATE)',
+  MODIFY_SISTEMA_API = '[Sistema] Modify Sistema (API)',
   REMOVE_SISTEMA_STATE = '[Sistema] Remove Sistema (STATE)',
+  REMOVE_SISTEMA_API = '[Sistema] Remove Sistema (API)',
 }
 
 export const getSistemaList = createAction(
@@ -23,7 +26,7 @@ export const addSistemaState = createAction(
   props<{ sistema: Sistema }>()
 )
 
-export const updateSistemaState = createAction(
+export const modifySistemaState = createAction(
   SistemaActions.MODIFY_SISTEMA_STATE,
   props<{ sistema: Sistema }>()
 )
