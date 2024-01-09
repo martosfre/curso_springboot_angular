@@ -5,8 +5,14 @@ import {CommonModule} from "@angular/common";
 const routes: Routes = [
   {
     path:"",
-    redirectTo: "admin",
+    redirectTo: "login",
     pathMatch:"full"
+  },
+  {
+    path:"login",
+    loadChildren: () =>
+      import("./auth/auth.module")
+        .then((modules) => modules.AuthModule)
   },
   {
     path:"admin",

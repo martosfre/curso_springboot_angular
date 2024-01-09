@@ -6,6 +6,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { PasswordModule } from 'primeng/password';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TableModule } from 'primeng/table';
     InputTextareaModule,
     ToolbarModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    PasswordModule
   ],
   exports: [
     CardModule,
@@ -25,7 +27,8 @@ import { TableModule } from 'primeng/table';
     InputTextareaModule,
     ToolbarModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    PasswordModule
   ],
 })
 export class PrimengModule { }

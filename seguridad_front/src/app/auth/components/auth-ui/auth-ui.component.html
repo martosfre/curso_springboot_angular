@@ -1,1 +1,18 @@
-<p>auth-ui works!</p>
+<p-card title="Login" class="flex justify-content-center">
+  <form [formGroup]="form">
+    <div class="flex flex-column gap-2">
+      <label for="nombreUsu">Usuario:</label>
+      <input pInputText id="nombreUsu" type="text" formControlName="usuarioNombre"/>
+    </div>
+    <div class="flex flex-column gap-2">
+      <label for="claveUsu">Clave:</label>
+      <p-password id="claveUsu" formControlName="usuarioClave" [feedback]="false"/>
+    </div>
+    <br/>
+    <p-toolbar>
+      <div class="p-toolbar-group-center">
+        <button pButton icon="pi pi-lock-open" class="mr-2" label="Ingresar" (click)="submit()"></button>
+      </div>
+    </p-toolbar>
+  </form>
+</p-card>
