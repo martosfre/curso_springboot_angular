@@ -1,6 +1,7 @@
-<app-toolbar title="{{tituloFormulario}}"/>
+<app-menu title="{{tituloFormulario}}"/>
 <!--En el dump componente se inyecta la propiedad del smart component.
-    Aqui desde el smart component se llama al dump component-->
+    Aqui desde el smart component se llama al dump component (3)
+    Aqui se unen los dos métodos (5.1)-->
 <app-sistema-ui-list [sistemas]="sistemas" [cabeceras]="cabeceras"
                      (sistema)="seleccionarSistema($event)"/>
 <app-footer/>

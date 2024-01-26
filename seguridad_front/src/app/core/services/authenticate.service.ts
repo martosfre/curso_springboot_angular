@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {environment} from "../../../environments/environment.development";
@@ -12,17 +12,19 @@ export class AuthenticateService {
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
-  ) { }
+  ) {
+  }
 
-  login(data:{usuarioNombre:string, usuarioClave:string}):Observable<User>{
-    return this.http.post<User>(`${environment.authUrl}/login`, data).pipe(
-      tap((data:any) => data),
-      catchError((err => throwError(() => err)))
-    )
+  login(data: { usuarioNombre: string, usuarioClave: string }): Observable<User> {
+    return this.http.post<User>(`${environment.authUrl}/login`, data)
+      .pipe(
+        tap((data: any) => data),
+        catchError((err => throwError(() => err)))
+      )
   }
 
   isAuthenticated(): boolean {
-    const token:string = localStorage.getItem('token') ?? '';
-    return this.jwtHelper.isTokenExpired(token);
+    const token = localStorage.getItem('token') ?? '';
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }

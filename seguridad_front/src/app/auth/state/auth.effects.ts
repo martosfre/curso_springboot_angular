@@ -23,7 +23,7 @@ export class AuthEffects {
               type: AuthActions.SET_TOKEN,
               token: data.token
             })),
-            tap(() => this.router.navigate(["admin"])),
+            tap(() => {this.router.navigate(["admin"])}),
             catchError(async (data) => ({
               type: AuthActions.LOGIN_ERROR,
               error: data.error}))

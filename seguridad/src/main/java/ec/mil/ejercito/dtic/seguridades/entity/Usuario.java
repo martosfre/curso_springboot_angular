@@ -23,7 +23,7 @@ public class Usuario {
     @NotNull(message = "Nombre de usuario requerido")
     @Column(name = "usuario_nombre", nullable = false, unique = true, length = 10)
     private String usuarioNombre;
-    @Column(name = "usuario_clave", nullable = false, length = 10)
+    @Column(name = "usuario_clave", nullable = false, length = 100)
     private String usuarioClave;
 
     @Temporal(TemporalType.TIMESTAMP)

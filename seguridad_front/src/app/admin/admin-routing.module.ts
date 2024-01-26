@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {SistemaListComponent} from "./pages/sistema-list/sistema-list.component";
 import {SistemaCreateComponent} from "./pages/sistema-create/sistema-create.component";
@@ -8,12 +8,25 @@ import {SistemaCreateComponent} from "./pages/sistema-create/sistema-create.comp
 const routes: Routes = [
   {
     path: "",
-    component:SistemaListComponent
+    component: SistemaListComponent //Smart Component (1)
   },
   {
     path: "sistema",
-    component: SistemaCreateComponent
+    component: SistemaListComponent,
+  },
+  {
+    path: 'sistema/create', children: [
+      {
+        path: "",
+        component: SistemaCreateComponent
+      },
+      {
+        path: ":id",
+        component: SistemaCreateComponent,
+      }
+    ]
   }
+
 ]
 
 @NgModule({
@@ -22,8 +35,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}

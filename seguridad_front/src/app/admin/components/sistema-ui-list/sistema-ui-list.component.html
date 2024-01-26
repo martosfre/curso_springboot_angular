@@ -1,9 +1,15 @@
-<p-table [columns]="cabeceras" [value]="sistemas" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [columns]="cabeceras" [value]="sistemas" [tableStyle]="{ 'min-width': '50rem' }"
+         selectionMode="single" [(selection)]="sistemaSeleccionado" dataKey="sistemaId"
+         [paginator]="true"
+         [rows]="5"
+         currentPageReportTemplate="Mostrar {first} al {last} de {totalRecords} registros"
+         [rowsPerPageOptions]="[5, 10, 20]">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
         {{ col.cabecera }}
       </th>
+      <th>Operaciones</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -11,6 +17,16 @@
       <td *ngFor="let col of columns">
         {{ rowData[col.valorCabecera] }}
       </td>
+      <td>
+        <p-button icon="pi pi-file-edit" [rounded]="true" severity="secondary" size="small"
+                  [outlined]="true" (click)="executeFormAction(rowData, 0)"></p-button>
+        <label style="color: white;"> - </label>
+        <p-button icon="pi pi-trash" [rounded]="true" severity="danger" size="small"
+                    [outlined]="true" (click)="confirmDelete(rowData)"></p-button>
+
+      </td>
     </tr>
   </ng-template>
 </p-table>
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-messages [(value)] = "msgs"></p-messages>

@@ -9,7 +9,7 @@ import {selectSistemas} from "../../states/sistema.selectors";
 
 @Component({
   selector: 'app-sistema-list',
-  templateUrl: './sistema-list.component.html',
+  templateUrl: './sistema-list.component.html', //se llama al dump component dentro del html (2)
   styleUrl: './sistema-list.component.css'
 })
 export class SistemaListComponent  implements OnInit{
@@ -43,8 +43,27 @@ export class SistemaListComponent  implements OnInit{
       this.sistemas = data;
     }))
   }
+  /**
+   * @method seleccionarSistema: Método para ejecutar las operaciones de edición o eliminación de un sistema
+   * @param data: Objeto Json con la información del sistema y la operación a ejecutar.
+   */
+  //(5.1) aqui le llama, verificar union en html
   seleccionarSistema(data:{sistema:Sistema, action:Operaciones}){
+    switch(data.action) {
+      case Operaciones.Editar: {
+        this.router.navigate(['admin/sistema', 'create', data.sistema.sistemaId]);
+        return;
+      }
+      case Operaciones.Eliminar: {
+        this.store.dispatch({type: SistemaActions.REMOVE_SISTEMA_API, payload: data.sistema.sistemaId});
+       // this.verifyError();
+        return;
 
+      }
+      default: ""
+    }
+    this.router.navigate(['admin', 'sistema', data.sistema.sistemaId]);
   }
+
 
 }

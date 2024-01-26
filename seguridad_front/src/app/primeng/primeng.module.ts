@@ -7,6 +7,10 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { PasswordModule } from 'primeng/password';
+import {MessagesModule} from "primeng/messages";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { MegaMenuModule } from 'primeng/megamenu';
+import {MenuModule} from "primeng/menu";
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { PasswordModule } from 'primeng/password';
     ToolbarModule,
     ButtonModule,
     TableModule,
-    PasswordModule
+    PasswordModule,
+    MessagesModule,
+    ConfirmDialogModule,
+    MenuModule,
+    MegaMenuModule
   ],
   exports: [
     CardModule,
@@ -28,7 +36,11 @@ import { PasswordModule } from 'primeng/password';
     ToolbarModule,
     ButtonModule,
     TableModule,
-    PasswordModule
+    PasswordModule,
+    MessagesModule,
+    ConfirmDialogModule,
+    MenuModule,
+    MegaMenuModule
   ],
 })
 export class PrimengModule { }
