@@ -10,6 +10,7 @@ export enum SistemaActions {
   MODIFY_SISTEMA_API = '[Sistema] Modify Sistema (API)',
   REMOVE_SISTEMA_STATE = '[Sistema] Remove Sistema (STATE)',
   REMOVE_SISTEMA_API = '[Sistema] Remove Sistema (API)',
+  SET_ERROR = '[Sistema] Set Error',
 }
 
 export const getSistemaList = createAction(
@@ -36,3 +37,7 @@ export const removeSistemaState = createAction(
   props<{ sistemaId: number }>()
 )
 
+export const setError = createAction(
+  SistemaActions.SET_ERROR,
+  props<{ error: string }>()
+)

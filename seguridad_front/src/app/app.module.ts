@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AppComponent} from "./app.component";
 import {RouterOutlet} from "@angular/router";
@@ -12,6 +12,7 @@ import {HeaderInterceptor} from "./core/interceptors/header.interceptor";
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {JwtModule} from "@auth0/angular-jwt";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export function  tokenGetter (){
   return localStorage.getItem("token");
@@ -29,15 +30,13 @@ export function  tokenGetter (){
     HttpClientModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     JwtModule.forRoot({
       config:{
         tokenGetter
       }
-    })
-  ],
-  exports: [
-    SharedModule
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }

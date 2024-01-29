@@ -13,3 +13,8 @@ export const selectSistema = (id: number) => createSelector(
   selectSistemaState,
   (state:SistemaState) => state.sistemas.find( d => d.sistemaId == id)
 )
+
+export const seleccionarError = () => createSelector(
+  selectSistemaState,
+  (state:SistemaState) => state.error
+)

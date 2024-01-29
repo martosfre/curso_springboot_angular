@@ -1,18 +1,61 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {SistemaActions} from "../../states/sistema.actions";
+import {Sistema} from "../../models/sistema.interface";
+import {Observable} from "rxjs";
+import {SistemaState} from "../../states/sistema.reducers";
+import {Store} from "@ngrx/store";
+import {selectSistema} from "../../states/sistema.selectors";
 
 @Component({
   selector: 'app-sistema-create',
   templateUrl: './sistema-create.component.html',
   styleUrl: './sistema-create.component.css'
 })
-export class SistemaCreateComponent implements OnInit{
+export class SistemaCreateComponent implements OnInit {
   //Variable para poder identificar si se va a guardar o actualizar
-  id:string = "";
+  id: string = "";
 
-  constructor(private router: ActivatedRoute){}
+  sistema$: Observable<Sistema | undefined>;
+  sistema: Sistema | null = null;
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private store: Store<SistemaState>) {
+    /*
+      1) Recupero el identificador que viene de la ruta
+      2) Llamar al selector para recuperar el sistema por su id
+      3) Verifique si existe el sistema para almacenar en una variable temporar para editar
+     */
+    const id: number = this.route.snapshot.params['id']; //(1)
+    this.sistema$ = this.store.select(selectSistema(id)); //(2)
+    this.sistema$.subscribe(d => { //(3)
+      if (d) this.sistema = d;
+    });
+  }
 
   ngOnInit(): void {
-    this.id = this.router.snapshot.params['id'];
+  }
+
+  /**
+   * @method formAction: Método para ejecutar las operaciones de creación o actualización de un sistema
+   * @param data: objeto Json con los datos del sistema y la operación a realizar
+   */
+  formAction(data: { value: Sistema, action: string }) {
+    switch (data.action) {
+      case "Crear" : {
+        this.store.dispatch({type: SistemaActions.ADD_SISTEMA_API, payload: data.value});
+        return;
+      }
+      case "Actualizar" : {
+        this.store.dispatch({type: SistemaActions.MODIFY_SISTEMA_API, payload: data.value});
+        return;
+      }
+
+      default:
+        ""
+    }
   }
 }

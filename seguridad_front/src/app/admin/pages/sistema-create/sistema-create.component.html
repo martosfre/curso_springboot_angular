@@ -1,6 +1,6 @@
 <app-menu/>
 <!--En el dump componente se inyecta la propiedad del smart component.
     Aqui desde el smart component se llama al dump component-->
-<app-sistema-ui [selectId]="id" />
+<app-sistema-ui [selectedSistema]="sistema" (action)="formAction($event)"/>
 <app-footer/>
 

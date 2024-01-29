@@ -1,20 +1,26 @@
 <p-card header="{{selectId ? 'Actualizar Sistema' : 'Crear Sistema'}}">
-  <form [formGroup]="form">
-    <div class="flex flex-column gap-2">
-      <label for="nombreSis">Nombre:</label>
-      <input pInputText id="nombreSis" formControlName="nombreSis"/>
+  <form [formGroup]="form"> <!-- Formulario Reactivo -->
+    <div class="formgrid grid">
+      <div class="field col">
+        <label for="nombreSis">Nombre:</label>
+        <input pInputText id="nombreSis" formControlName="sistemaNombre" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+        <small class="p-error block"
+               *ngIf="form.get('sistemaNombre')?.invalid && form.get('nombreSis')?.dirty">Nombre es requerido</small>
+      </div>
+      <div class="field col">
+        <label for="contextoSis">Contexto:</label>
+        <input pInputText id="contextoSis" formControlName="sistemaContexto" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+        <small class="p-error block"
+               *ngIf="form.get('sistemaContexto')?.invalid && form.get('sistemaContexto')?.dirty">Contexto es requerido</small>
+      </div>
     </div>
     <div class="flex flex-column gap-2">
       <label for="descripcionSis">Descripción:</label>
-      <textarea id="descripcionSis" rows="3" cols="30" formControlName="descripcionSis"></textarea>
-    </div>
-    <div class="flex flex-column gap-2">
-      <label for="contextoSis">Contexto:</label>
-      <input pInputText id="contextoSis" formControlName="contextoSis"/>
+      <textarea id="descripcionSis" rows="3" cols="30" formControlName="sistemaDescripcion"></textarea>
     </div>
     <p-toolbar>
       <div class="p-toolbar-group-end">
-        <p-button label="{{actionButtonLabel}}" (click)="emitirAction()"></p-button>
+        <p-button label="{{actionButtonLabel}}" (click)="emitirAction()" [disabled]="form.invalid"></p-button>
         <span style="width:5px"></span>
         <p-button label="Limpiar" (click)="clear()"></p-button>
       </div>

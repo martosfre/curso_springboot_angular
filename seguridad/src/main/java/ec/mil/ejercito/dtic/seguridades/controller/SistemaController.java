@@ -28,8 +28,9 @@ public class SistemaController {
      @PathVariable
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Sistema> buscarSistema(@PathVariable Long id) {
-        return ResponseEntity.ok(sistemaService.buscarPorId(id));
+    public ResponseEntity<Sistema> buscarSistema(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(sistemaService.buscarPorId(id)
+                .orElseThrow(() -> new Exception("Registro no encontrado")));
     }
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {isDevMode, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SistemaCreateComponent} from "./pages/sistema-create/sistema-create.component";
 import {SharedModule} from "../shared/shared.module";
@@ -13,7 +13,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {SistemaEffects} from "./states/sistema.effects";
 import {sistemaReducer} from "./states/sistema.reducers";
 import {StoreModule} from "@ngrx/store";
-import {ConfirmationService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @NgModule({
   /*
@@ -38,7 +38,7 @@ import {ConfirmationService} from "primeng/api";
   ],
   //Declarmos los servicios que van a estar disponibles para la inyección de dependencia
   providers: [
-    ConfirmationService
+    ConfirmationService, MessageService,
   ],
   //Declaramos todos los componentes , directivas y pipes que van a estar disponibles a otros módulos una vez que se importe
   exports: [],

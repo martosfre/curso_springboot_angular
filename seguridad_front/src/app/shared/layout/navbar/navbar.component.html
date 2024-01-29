@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<p-toolbar>
+  <div class="p-toolbar-group-start">
+    <label>{{titulo}}</label>
+  </div>
+  <div class="p-toolbar-group-end">
+    <button pButton icon="pi pi-plus" class="mr-2" label="Crear" (click)="emitAction(0)"></button>
+  </div>
+</p-toolbar>
+

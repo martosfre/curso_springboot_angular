@@ -37,7 +37,7 @@ export class SistemaService {
    * @param sistema
    */
   addSistema(sistema: Sistema): Observable<Sistema> {
-    return this.http.post<Sistema>(`${environment.apiUrl}/sistema/`, sistema).pipe(
+    return this.http.post<Sistema>(`${environment.apiUrl}/sistemaCon/crear`, sistema).pipe(
       tap((data: Sistema) => data),
       catchError((err => throwError(() => err)))
     )
@@ -49,7 +49,7 @@ export class SistemaService {
    * @param sistema
    */
   updateSistema(id: number, sistema: Sistema): Observable<Sistema> {
-    return this.http.put<Sistema>(`${environment.apiUrl}/sistema/${id}`, sistema).pipe(
+    return this.http.put<Sistema>(`${environment.apiUrl}/sistemaCon/actualizar/${id}`, sistema).pipe(
       tap((data: Sistema) => data),
       catchError((err => throwError(() => err)))
     )
@@ -60,7 +60,7 @@ export class SistemaService {
    * @param id
    */
   deleteSistema(id: number): Observable<Sistema>{
-    return this.http.delete<Sistema>(`${environment.apiUrl}/sistema/${id}`).pipe(
+    return this.http.delete<Sistema>(`${environment.apiUrl}/sistemaCon/${id}`).pipe(
       catchError((err => throwError(() => err)))
     )
   }

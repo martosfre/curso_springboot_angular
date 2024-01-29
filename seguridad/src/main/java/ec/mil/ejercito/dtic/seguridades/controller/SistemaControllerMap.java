@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -47,18 +48,35 @@ public class SistemaControllerMap {
         return new ResponseEntity<>(sistemaDtoRes, HttpStatus.CREATED);
     }
 
+    @PutMapping("/actualizar/{id}")
+    public void actualizarSistema(@PathVariable("id") Long id, @RequestBody SistemaDto sistemaDto) throws Exception {
+        if (!id.equals(sistemaDto.getSistemaId())) throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "No se encontró sistema con ese identificador"
+        );
+        var sistema = convertSistema(sistemaDto);
+        sistemaService.guardarActualizarSistema(sistema);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarSistema(@PathVariable Long id) throws Exception {
+        Sistema sistema = sistemaService.buscarPorId(id).orElseThrow(() -> new Exception("Sistema no encontrado"));
+        sistemaService.eliminar(sistema);
+    }
+
     @GetMapping //Configuración del endpoint para la operación GET
     public ResponseEntity<List<SistemaDto>> buscarTodos() {
         return ResponseEntity.ok(sistemaService.buscarTodos()
                 .stream().map(this::convertSistemaDto).toList());
     }
 
+
     /* Configuración del endpoint para la operación GET con parámetro representado por {} y
      @PathVariable
      */
     @GetMapping("/{id}")
     public ResponseEntity<SistemaDto> buscarSistema(@PathVariable Long id) {
-        return ResponseEntity.ok(convertSistemaDto(sistemaService.buscarPorId(id)));
+        return ResponseEntity.ok(convertSistemaDto(sistemaService.buscarPorId(id).get()));
     }
 
 }

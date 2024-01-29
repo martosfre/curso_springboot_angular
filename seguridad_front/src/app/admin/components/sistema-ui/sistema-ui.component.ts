@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Sistema} from "../../models/sistema.interface";
 
 @Component({
   selector: 'app-sistema-ui',
@@ -8,6 +9,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class SistemaUiComponent implements OnInit {
   //Recibir información de los smart components
+  @Input() selectedSistema: Sistema | null = null;
+
   @Input() selectId: string = "";
   @Input() actionButtonLabel: string = "Crear";
 
@@ -19,16 +22,17 @@ export class SistemaUiComponent implements OnInit {
 
   constructor(private fb: FormBuilder){
     this.form = this.fb.group({
-      id: [''],
-      nombreSis: [''],
-      descripcionSis: [''],
-      contextoSis: ['']
+      sistemaId: [''],
+      sistemaNombre: ['', Validators.required],
+      sistemaDescripcion: ['', Validators.required],
+      sistemaContexto: ['', Validators.required],
     })
   }
 
   //Inicializar Formulario
   ngOnInit(): void {
     this.validarAction();
+    this.validarOperacion();
   }
 
   /**
@@ -38,6 +42,24 @@ export class SistemaUiComponent implements OnInit {
     if(this.selectId){
       this.actionButtonLabel = "Actualizar";
     }
+  }
+
+  /**
+   * @method validarOperacion: Método para revisar si se trate de una actualización para cargar los datos en el formulario
+   */
+  validarOperacion() {
+    if (this.selectedSistema) {
+      this.actionButtonLabel = "Actualizar";
+      this.actualizarValores();
+    }
+  }
+
+  /**
+   * @method updateValuesForm: Método para actualizar los valores en el formulario
+   */
+  actualizarValores () {
+    if(this.selectedSistema)
+      this.form.patchValue(this.selectedSistema); //Actualizo formulario
   }
 
   emitirAction(){
