@@ -38,7 +38,7 @@ export class SistemaEffects {
             sistema: data.payload
           })),
           tap(() => { this.router.navigate(["admin/sistema"]) }),
-          catchError(() => EMPTY)
+          catchError(async (data) => ({type:SistemaActions.SET_ERROR, error: data.error}))
           ))
       )
     }, {dispatch: true});
@@ -54,7 +54,7 @@ export class SistemaEffects {
             sistema: data.payload
           })),
           tap(() => this.router.navigate(["admin"])),
-          catchError(() => EMPTY)
+          catchError(async (data) => ({type:SistemaActions.SET_ERROR, error: data.error}))
         ))
     )
   }, {dispatch: true});

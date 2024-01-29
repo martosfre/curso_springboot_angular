@@ -5,7 +5,8 @@ import {Sistema} from "../../models/sistema.interface";
 import {Observable} from "rxjs";
 import {SistemaState} from "../../states/sistema.reducers";
 import {Store} from "@ngrx/store";
-import {selectSistema} from "../../states/sistema.selectors";
+import {seleccionarError, selectSistema} from "../../states/sistema.selectors";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-sistema-create',
@@ -19,11 +20,13 @@ export class SistemaCreateComponent implements OnInit {
   sistema$: Observable<Sistema | undefined>;
   sistema: Sistema | null = null;
 
+  error$ = this.store.select(seleccionarError());
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<SistemaState>) {
+    private store: Store<SistemaState>,
+    private messageService: MessageService) {
     /*
       1) Recupero el identificador que viene de la ruta
       2) Llamar al selector para recuperar el sistema por su id
@@ -47,15 +50,27 @@ export class SistemaCreateComponent implements OnInit {
     switch (data.action) {
       case "Crear" : {
         this.store.dispatch({type: SistemaActions.ADD_SISTEMA_API, payload: data.value});
+        this.verificarTransacion();
         return;
       }
       case "Actualizar" : {
         this.store.dispatch({type: SistemaActions.MODIFY_SISTEMA_API, payload: data.value});
+        this.verificarTransacion();
         return;
       }
 
       default:
         ""
     }
+  }
+
+  verificarTransacion() {
+    this.error$.subscribe({
+      next: data => {
+        if(data) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: data });
+        }
+      }
+    });
   }
 }

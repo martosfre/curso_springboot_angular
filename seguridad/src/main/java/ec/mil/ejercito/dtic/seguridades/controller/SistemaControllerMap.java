@@ -42,7 +42,7 @@ public class SistemaControllerMap {
             @ApiResponse(responseCode = "201", description = "Sistema creado correctamente"),
             @ApiResponse(responseCode = "400", description = "Recurso no encontrado")
             })
-    public ResponseEntity<SistemaDto> crearSistema(@RequestBody SistemaDto sistemaDto) {
+    public ResponseEntity<SistemaDto> crearSistema(@RequestBody SistemaDto sistemaDto) throws Exception{
         var sistema = convertSistema(sistemaDto);
         var sistemaDtoRes = convertSistemaDto(sistemaService.guardarActualizarSistema(sistema));
         return new ResponseEntity<>(sistemaDtoRes, HttpStatus.CREATED);
@@ -75,7 +75,7 @@ public class SistemaControllerMap {
      @PathVariable
      */
     @GetMapping("/{id}")
-    public ResponseEntity<SistemaDto> buscarSistema(@PathVariable Long id) {
+    public ResponseEntity<SistemaDto> buscarSistema(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(convertSistemaDto(sistemaService.buscarPorId(id).get()));
     }
 
