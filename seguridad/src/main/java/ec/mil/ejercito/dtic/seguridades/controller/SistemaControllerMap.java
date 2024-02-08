@@ -43,9 +43,14 @@ public class SistemaControllerMap {
             @ApiResponse(responseCode = "400", description = "Recurso no encontrado")
             })
     public ResponseEntity<SistemaDto> crearSistema(@RequestBody SistemaDto sistemaDto) throws Exception{
-        var sistema = convertSistema(sistemaDto);
-        var sistemaDtoRes = convertSistemaDto(sistemaService.guardarActualizarSistema(sistema));
-        return new ResponseEntity<>(sistemaDtoRes, HttpStatus.CREATED);
+        try {
+            var sistema = convertSistema(sistemaDto);
+            var sistemaDtoRes = convertSistemaDto(sistemaService.guardarActualizarSistema(sistema));
+            return new ResponseEntity<>(sistemaDtoRes, HttpStatus.CREATED);
+
+        }catch (Exception e){
+            throw new RuntimeException("Contexto duplicado");
+        }
     }
 
     @PutMapping("/actualizar/{id}")

@@ -48,5 +48,4 @@ public class Sistema implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "sistema")
     private List<Perfil> perfiles;
-
 }

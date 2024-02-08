@@ -2,6 +2,7 @@ package ec.mil.ejercito.dtic.seguridades.config.seguridad;
 
 import ec.mil.ejercito.dtic.seguridades.service.seguridad.UserDetailImplService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -41,6 +42,9 @@ public class SecurityConfig {
     @Autowired
     private AuthenticationFilter authenticationFilter;
 
+    @Value("${client.url}")
+    private String CLIENT_URL;
+
     /**
      * Método para autenticar el usuario utilizando la BDD (Mecanismo BDD, Mecanismo Token)
      * @param aut
@@ -77,7 +81,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Arrays.asList(CLIENT_URL));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

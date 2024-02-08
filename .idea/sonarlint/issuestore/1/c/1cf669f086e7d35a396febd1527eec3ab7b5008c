@@ -1,0 +1,9 @@
+
+v	java:S116."URename this field "CLIENT_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùş¨Éùÿÿÿÿ8¤»—Ö1
+_
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8»‡³ÈÎ1
+_
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼‡³ÈÎ1
+t
+java:S3305+"RInject this field value directly into "filterChain", the only method that uses it.(¼Ö÷ÿÿÿÿÿÿ8½‡³ÈÎ1
+]	java:S125!"<This block of commented-out lines of code should be removed.(ëÙŠ¦øÿÿÿÿ8¿‡³ÈÎ1

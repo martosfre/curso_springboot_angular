@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: org.audit4j:audit4j-core:2.8.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/audit4j/audit4j-core/2.8.0/audit4j-core-2.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/audit4j/audit4j-core/2.8.0/audit4j-core-2.8.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/audit4j/audit4j-core/2.8.0/audit4j-core-2.8.0-sources.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/audit4j/audit4j-core-master/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/audit4j/audit4j-core-master/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

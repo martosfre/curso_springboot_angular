@@ -50,12 +50,12 @@ export class SistemaCreateComponent implements OnInit {
     switch (data.action) {
       case "Crear" : {
         this.store.dispatch({type: SistemaActions.ADD_SISTEMA_API, payload: data.value});
-        this.verificarTransacion();
+        this.verificarError();
         return;
       }
       case "Actualizar" : {
         this.store.dispatch({type: SistemaActions.MODIFY_SISTEMA_API, payload: data.value});
-        this.verificarTransacion();
+        this.verificarError();
         return;
       }
 
@@ -64,13 +64,13 @@ export class SistemaCreateComponent implements OnInit {
     }
   }
 
-  verificarTransacion() {
+  verificarError() {
     this.error$.subscribe({
       next: data => {
         if(data) {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: data });
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: data.error.errorMessage });
         }
-      }
+        }
     });
   }
 }

@@ -2,6 +2,8 @@ package ec.mil.ejercito.dtic.seguridades.service;
 
 import ec.mil.ejercito.dtic.seguridades.entity.Sistema;
 import ec.mil.ejercito.dtic.seguridades.repository.SistemaRepository;
+import org.audit4j.core.annotation.Audit;
+import org.audit4j.core.annotation.AuditField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,13 +24,15 @@ public class SistemaService {
     @Autowired //Ejecutar inyección de dependecia; es decir, crear una instancia de la clase cuando se utilice la misma
     private SistemaRepository sistemaRepository;
 
+    @Audit
     @Transactional //Para configurar que el método es transaccional
-    public Sistema guardarActualizarSistema(Sistema sistema) {
+    public Sistema guardarActualizarSistema(@AuditField(field = "sistema") Sistema sistema) {
         return sistemaRepository.save(sistema);
     }
 
+    @Audit
     @Transactional
-    public String eliminar(Sistema sistema) {
+    public String eliminar(@AuditField(field = "sistema") Sistema sistema) {
         sistemaRepository.delete(sistema);
         return "Sistema eliminado correctamente";
     }

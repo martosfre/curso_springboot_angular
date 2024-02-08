@@ -23,7 +23,7 @@ export class SistemaEffects {
             type: SistemaActions.SET_SISTEMAS_LIST,
             sistemas
           })),
-          catchError(() => EMPTY)
+          catchError(async (data) => ({type:SistemaActions.SET_ERROR, error: data}))
         ))
     )
   }, {dispatch: true});
@@ -38,7 +38,7 @@ export class SistemaEffects {
             sistema: data.payload
           })),
           tap(() => { this.router.navigate(["admin/sistema"]) }),
-          catchError(async (data) => ({type:SistemaActions.SET_ERROR, error: data.error}))
+          catchError(async (data) => ({type:SistemaActions.SET_ERROR, error: data}))
           ))
       )
     }, {dispatch: true});

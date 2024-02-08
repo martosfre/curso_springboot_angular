@@ -1,0 +1,15 @@
+
+b	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(Üìİ 8øíğØÕ1
+b	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(¬Ğ§Æ8øíğØÕ1
+b	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(çÂ²ê8ùíğØÕ1
+b	java:S112S"FDefine and throw a dedicated exception instead of using a generic one.(÷¨â“8íè§ÙÕ1
+r
+java:S3655T"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(‚†Ş‚úÿÿÿÿ8€îğØÕ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8îğØÕ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8îğØÕ1
+‰
+java:S1130S"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(÷¨â“8†îğØÕ1
+a
+java:S1128"DRemove this unused import 'org.springframework.http.HttpStatusCode'.(®å™Õ8÷è§ÙÕ1
